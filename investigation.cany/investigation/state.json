@@ -1,0 +1,41 @@
+{
+  "revision": 7,
+  "brief": {
+    "question": "Why does app/ fail its TypeScript/Vite build with `tsc` not recognized, and what project-local change makes it build successfully?",
+    "purpose": "Fix the user's reported app build failure and verify it with rebuild_check.",
+    "targets": [
+      "Portafolio3D/app/"
+    ],
+    "constraints": [
+      "Keep changes inside app/.",
+      "Run the build and rebuild_check; fix any remaining listed issues."
+    ],
+    "done_when": "The app build succeeds and a final rebuild_check reports no remaining build issues."
+  },
+  "plan": [
+    {
+      "title": "Inspect the app's build configuration",
+      "status": "done",
+      "why": "package.json already includes TypeScript and the repository has a pnpm lockfile."
+    },
+    {
+      "title": "Make local dependencies available to the build",
+      "status": "blocked",
+      "why": "Craft's command runner requires approval that this session's policy denies; local shell cannot enter the workspace, and pnpm is unavailable."
+    },
+    {
+      "title": "Rebuild and run rebuild_check",
+      "status": "blocked",
+      "why": "The latest rebuild_check still fails because the local tsc executable is unavailable."
+    },
+    {
+      "title": "Restore Craft's original mode",
+      "status": "done",
+      "why": "Deep mode is back to false."
+    }
+  ],
+  "hypotheses": [],
+  "findings": [],
+  "handoff": "Current task: repair the existing TypeScript/Vite build for Portafolio3D. Read package.json and pnpm-lock.yaml: TypeScript is already declared as a devDependency (typescript ^5.9.3; lock pins 5.9.3), and .npmrc contains pnpm's store-dir setting. Latest rebuild_check still fails at `tsc` not recognized. No app files were changed. Craft build_command_run refused npm/pnpm install because this session's approval policy is `never`; the local shell could not enter the workspace, pnpm is unavailable there, and network installation via Corepack is blocked. Craft Deep mode has been restored to false. To continue, run the locked dependency install from an approved workspace command context, then run the build and rebuild_check again.",
+  "updated": "2026-11-09T16:58:54Z"
+}

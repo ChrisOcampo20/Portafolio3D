@@ -1,0 +1,3 @@
+# Handoff
+
+Current task: repair the existing TypeScript/Vite build for Portafolio3D. Read package.json and pnpm-lock.yaml: TypeScript is already declared as a devDependency (typescript ^5.9.3; lock pins 5.9.3), and .npmrc contains pnpm's store-dir setting. Latest rebuild_check still fails at `tsc` not recognized. No app files were changed. Craft build_command_run refused npm/pnpm install because this session's approval policy is `never`; the local shell could not enter the workspace, pnpm is unavailable there, and network installation via Corepack is blocked. Craft Deep mode has been restored to false. To continue, run the locked dependency install from an approved workspace command context, then run the build and rebuild_check again.

@@ -1,0 +1,14 @@
+{
+  "id": "unk_9795d9b94aefcaad",
+  "revision": 3,
+  "question": "¿Se autoriza una inspección de solo lectura de los archivos y la interfaz del proyecto? La solicitud pide una auditoría completa, pero las instrucciones de esta sesión prohíben abrir, listar, leer o ejecutar cualquier contenido del proyecto.",
+  "severity": "critical",
+  "domain": "alcance de auditoría",
+  "status": "resolved",
+  "probes": [
+    "Current user request explicitly asks for an app/ build fix, rebuild, and rebuild_check."
+  ],
+  "evidence_for": [],
+  "evidence_against": [],
+  "resolution": "The current request authorizes targeted inspection and modification of app/ to fix the reported build error and run rebuild_check. It does not authorize the broader portfolio audit from the earlier task."
+}
